@@ -5,7 +5,10 @@
   "exports": {
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
+    "./code": "./src/code.tsx",
+    "./aurora-background":"./src/aurora-background.tsx",
+    "./FloatingNav":"./src/floating-nav.tsx",
+    "./globe":"./src/globe.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
