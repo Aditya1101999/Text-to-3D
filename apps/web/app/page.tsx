@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import Navbar from "./components/navbar";
 import { StickyScroll } from "../../../packages/ui/src/sticky-scroll-reveal";
 import Image from "next/image";
