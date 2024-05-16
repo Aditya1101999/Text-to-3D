@@ -1,8 +1,8 @@
 "use client";
-import { useRef } from "react";
+// eslint-disable-next-line no-redeclare
+import React , { useRef} from "react";
 import { useMotionValueEvent, useScroll , motion } from "framer-motion";
 import { cn } from "../utils/cn";
-import React from "react";
 
 export const StickyScroll = ({
   content,
@@ -11,7 +11,7 @@ export const StickyScroll = ({
   content: {
     title: string;
     description: string;
-    content?: React.ReactNode | any;
+    content?: React.ReactNode
   }[];
   contentClassName?: string;
 }) => {
@@ -26,19 +26,25 @@ export const StickyScroll = ({
   const cardLength = content.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
-    const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
-        }
-        return acc;
-      },
-      0
-    );
-    setActiveCard(closestBreakpointIndex);
-  });
+  const cardsBreakpoints = content.map((_, index) => index / cardLength);
+  const closestBreakpointIndex = cardsBreakpoints.reduce(
+    (acc, breakpoint, index) => {
+      const distance = Math.abs(latest - breakpoint);
+      if (
+        acc >= 0 &&
+        acc < cardsBreakpoints.length &&
+        //@ts-ignore
+        distance < Math.abs(latest - cardsBreakpoints[acc])
+      ) {
+        return index;
+      }
+      return acc;
+    },
+    0
+  );
+  setActiveCard(closestBreakpointIndex);
+});
+
 
   const backgroundColors = [
     "var(--slate-800)",
@@ -95,8 +101,8 @@ export const StickyScroll = ({
           "hidden lg:block h-80 w-9/12 rounded-md sticky top-10 overflow-hidden",
           contentClassName
         )}
-      >
-        {content[activeCard].content ?? null}
+        //@ts-ignore
+       > {content[activeCard].content ?? null}
       </motion.div>
     </motion.div>
   );

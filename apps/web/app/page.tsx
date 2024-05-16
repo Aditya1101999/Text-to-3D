@@ -109,7 +109,7 @@ export default function Page(): JSX.Element {
             <p className='mt-4 text-lg text-gray-500'>
               Render3D is a generative AI-powered platform that makes it faster,
               cheaper, and easier for users to automatically convert text
-              descriptions of real-world objects into 3D models.
+              descriptions of real- objects into 3D models.
             </p>
           </div>
         </div>

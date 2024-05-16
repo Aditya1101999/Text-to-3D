@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { Position } from "@repo/ui/globe";
 const World = dynamic(() => import("@repo/ui/globe").then((m) => m.World), {
     ssr: false,
   });
@@ -27,7 +28,7 @@ const World = dynamic(() => import("@repo/ui/globe").then((m) => m.World), {
       autoRotateSpeed: 0.5,
     };
     const colors = ["#ffffff", "#ffffff", "#ffffff"];
-    const sampleArcs = [
+    const sampleArcs : Position[] = [
       {
         order: 1,
         startLat: -19.885592,
