@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import Navbar from "./components/navbar";
 import { StickyScroll } from "../../../packages/ui/src/sticky-scroll-reveal";
 import Image from "next/image";
-import Generator from "./components/generator";
+import Spline from "@splinetool/react-spline";
 import Footer from "./components/footer";
-import { GlobeDemo } from "./components/globedemo";
+import KnowUs from "./components/know-us";
+import Link from "next/link";
 
 const content = [
   {
@@ -47,10 +48,9 @@ export default function Page(): JSX.Element {
     <div>
       <Navbar />
 
-      
 
-      <div className='grid grid-cols-2 mt-32'>
-        <div className='h-80'>
+      <div className='grid grid-cols-2 mt-40 h-auto'>
+        <div>
           <div className='mb-8 max-w-fit  space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/80 cursor-pointer'>
             <p className='text-sm font-semibold text-gray-700'>
               Currently in development
@@ -60,13 +60,13 @@ export default function Page(): JSX.Element {
             Transforming your words
           </h1>
           <h1 className='text-5xl text-white font-semibold leading-loose'>
-            into <span className='text-blue-500'>three dimensions</span>
+            into <span className='text-blue-500'>three dimensions.</span>
           </h1>
 
           <div className='flex gap-4'>
-            <a className='bg-white w-1/3 rounded-full text-center p-3 text-xl hover:bg-blue-500 transition-all hover:text-white cursor-pointer'>
+            <Link href="/generate" className='bg-white w-1/3 rounded-md text-center p-3 text-xl hover:bg-blue-500 transition-all hover:text-white cursor-pointer'>
               Try Now
-            </a>
+            </Link>
             <a
               href='#know-more'
               className='text-white  p-3 text-xl cursor-pointer hover:underline'>
@@ -79,8 +79,9 @@ export default function Page(): JSX.Element {
             </h1>
           </div>
         </div>
-        <div className='-translate-y-40'>
-          <GlobeDemo />
+        <div className='flex justify-center items-center md:w-3/5 h-96 -translate-y-10'>
+          {/* <GlobeDemo /> */}
+          <Spline className="w-full h-96 flex scale-[.25] sm:scale-[.35] lg:scale-[.5] items-center justify-center md:justify-start -z-10" scene="https://prod.spline.design/pvM5sSiYV2ivWraz/scene.splinecode"></Spline>
         </div>
       </div>
 
@@ -99,7 +100,7 @@ export default function Page(): JSX.Element {
       </div>
 
       
-      <div className='mx-auto max-w-5xl' id='know-more'>
+      <div className='mx-auto max-w-5xl mt-60' id='know-more'>
         <div className='px-6 lg:px-8'>
           <div className='mx-auto max-w-5xl sm:text-center'>
             <h2 className='mt-2 font-bold text-4xl text-white sm:text-5xl'>
@@ -155,6 +156,8 @@ export default function Page(): JSX.Element {
       <div className=' mt-24 p-10'>
         <StickyScroll content={content} />
       </div>
+
+      <KnowUs/>
 
       <Footer />
     </div>

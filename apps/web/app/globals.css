@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html{
-    background-color: #050505;
+    background-color: #111827;
     scroll-behavior: smooth;
 }
 
@@ -19,12 +19,12 @@ html{
  
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #121212;
+    background: #111827;
     border-radius: 5px;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #26272B;
+    background: #3d3f45;
     border-radius: 5px;
 }

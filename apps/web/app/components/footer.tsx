@@ -22,10 +22,6 @@ export default function Footer(): JSX.Element {
                         <li className="mr-4"><a href="/twitter" className="text-gray-200 hover:text-white">Twitter </a></li>
                         <li className="mr-4"><a href="/instagram" className="text-gray-200 hover:text-white">Instagram</a></li>
                     </ul>
-                    <div className="mt-4">
-                        <input type="email" placeholder="Enter your email" className="bg-gray-500 rounded px-4 py-2 text-white"/>
-                        <button className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-full">Subscribe</button>
-                    </div>
                 </div>
             </div>
         </footer>
