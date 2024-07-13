@@ -13,7 +13,7 @@ declare module "@react-three/fiber" {
 
 extend({ ThreeGlobe });
 
-const RING_PROPAGATION_SPEED = 3;
+const RING_PROPAGATION_SPEED = 5;
 const aspect = 1.2;
 const cameraZ = 300;
 
@@ -80,7 +80,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     showAtmosphere: true,
     atmosphereAltitude: 0.1,
     polygonColor: "rgba(255,255,255,0.7)",
-    globeColor: "#1d072e",
+    globeColor: "#191918",
     emissive: "#000000",
     emissiveIntensity: 0.1,
     shininess: 0.9,

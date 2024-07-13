@@ -2,29 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    background-color: #111827;
-    scroll-behavior: smooth;
+html {
+  background-color: #020202;
+  scroll-behavior: smooth;
+  background-image: url('../public/grid.png');
+  cursor: pointer;
 }
 
 .max-width {
-    width: min(120ch, 100% - 4rem);
-    margin-inline: auto;
-  }
-
-  /* width */
-::-webkit-scrollbar {
-    width: 0.5rem;
+  width: min(120ch, 100% - 4rem);
+  margin-inline: auto;
 }
- 
+
+.text-glow {
+  text-shadow: 0 0 12px rgba(0, 123, 255, 0.8), 0 0 24px rgba(0, 123, 255, 0.8);
+}
+.text-glow-green {
+  text-shadow: 0 0 12px rgba(0, 255, 0, 0.8), 0 0 24px rgba(17, 255, 0, 0.8);
+}
+.border-gradient-to-r {
+  border-image-slice: 1;
+  border-width: 4px;
+  border-image-source: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #111827;
-    border-radius: 5px;
+  background: #111827;
+  border-radius: 5px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #3d3f45;
-    border-radius: 5px;
+  background: #3d3f45;
+  border-radius: 5px;
 }
