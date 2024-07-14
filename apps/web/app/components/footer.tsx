@@ -1,29 +1,79 @@
-import React from 'react';
+import React from "react";
+import Link from "next/link";
+import { Twitter, Linkedin, Github, Youtube, ExternalLink } from "lucide-react"; // Import ExternalLink icon
 
 export default function Footer(): JSX.Element {
-    return (
-        <footer className="text-black p-8 mt-36">
-            <div className="container mx-auto flex justify-between gap-8">
-                <div className="w-1/3">
-                    <h3 className="text-xl font-bold text-white">Render<span className='text-blue-500'>3D</span></h3>
-                    <p className="mt-4 text-slate-500">Transforming your words into three dimensions</p>
-                </div>
-                <div className="w-1/3">
-                    <h3 className="text-xl font-bold text-white">Terms of Policy & Privacy</h3>
-                    <ul className="mt-4">
-                        <li><a href="/terms" className="text-gray-500 hover:text-white">Terms of Service</a></li>
-                        <li><a href="/privacy" className="text-gray-500 hover:text-white">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div className="w-1/3">
-                    <h3 className="text-xl font-bold text-white">Social Links & Subscribe</h3>
-                    <ul className="mt-4 flex">
-                        <li className="mr-4"><a href="/facebook" className="text-gray-200 hover:text-white">Facebook</a></li>
-                        <li className="mr-4"><a href="/twitter" className="text-gray-200 hover:text-white">Twitter </a></li>
-                        <li className="mr-4"><a href="/instagram" className="text-gray-200 hover:text-white">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className='w-full mt-24'>
+      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+        <div className='py-16 flex justify-between items-center flex-col gap-8 lg:flex-row'>
+          
+          {/* Logo Section */}
+          <div className='flex items-center'>
+            <img src='/logo.png' alt='Logo' className='h-16 w-16' />
+            <Link
+              href='/'
+              className='flex justify-center text-white text-2xl font-semibold'>
+              Render<span className='text-blue-500'>3D</span>
+            </Link>
+          </div>
+
+          {/* Navigation Links */}
+          <ul className='text-lg text-center sm:flex items-cente justify-center gap-14 lg:gap-10 xl:gap-14 transition-all duration-500'>
+            <li>
+              <Link href='/' className='text-slate-400 font-semibold hover:text-white'>
+                Render3D
+              </Link>
+            </li>
+            <li className='sm:my-0 my-2'>
+              <Link href='/' className='text-slate-400 font-semibold hover:text-white'>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href='/pricing' className='text-slate-400 font-semibold hover:text-white'>
+                Pricing
+              </Link>
+            </li>
+            <li className='sm:my-0 my-2'>
+              <a href='https://github.com' className='text-slate-400 font-semibold hover:text-white flex items-center'>
+                Github <ExternalLink className='ml-2' size={18} /> {/* External link icon */}
+              </a>
+            </li>
+            <li>
+              <Link href='/generate' className='text-slate-400 font-semibold hover:text-white'>
+                Generate
+              </Link>
+            </li>
+          </ul>
+
+          {/* Social Media Icons */}
+          <div className='flex gap-4'>
+            <a href='https://twitter.com' className='text-slate-300 bg-slate-800 rounded-full p-2 hover:bg-slate-600'>
+              <Twitter />
+            </a>
+            <a href='https://linkedin.com' className='text-slate-300 bg-slate-800 rounded-full p-2 hover:bg-slate-600'>
+              <Linkedin />
+            </a>
+            <a href='https://github.com' className='text-slate-300 bg-slate-800 rounded-full p-2 hover:bg-slate-600'>
+              <Github />
+            </a>
+            <a href='https://youtube.com' className='text-slate-300 bg-slate-800 rounded-full p-2 hover:bg-slate-600'>
+              <Youtube />
+            </a>
+          </div>
+        </div>
+
+        {/* Footer Text */}
+        <div className='py-7 border-t border-gray-700'>
+          <div className='flex items-center justify-center'>
+            <span className='text-gray-400'>
+              ©<a href='/'>Render3D</a> 2024-25, All rights
+              reserved.
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

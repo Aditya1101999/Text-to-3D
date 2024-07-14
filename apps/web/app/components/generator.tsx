@@ -78,7 +78,7 @@ export default function Generate(): JSX.Element {
           className='p-4 rounded-lg bg-slate-800 border-2 border-slate-600 text-white shadow-xl h-60'
         />
 
-        <button className='p-4 rounded-lg bg-blue-500 text-white shadow-xl mt-5'>
+        <button className='p-4 rounded-lg bg-blue-600 text-white shadow-xl mt-5'>
           Generate
         </button>
       </div>
