@@ -1,11 +1,17 @@
 "use client";
 import Navbar from "./components/navbar";
-import { WandSparkles,ExternalLink } from "lucide-react";
+import { WandSparkles, ExternalLink } from "lucide-react";
 import Spline from "@splinetool/react-spline";
+import dynamic from "next/dynamic";
+
 import Footer from "./components/footer";
 import KnowUs from "./components/know-us";
 import Link from "next/link";
 import Expertise from "./components/expertise";
+
+const SplineDesign = dynamic(() => import("./components/SplineDesign"), {
+  ssr: false,
+});
 
 export default function Page(): JSX.Element {
   return (
@@ -33,7 +39,11 @@ export default function Page(): JSX.Element {
             <a
               href='#know-more'
               className='text-white px-4 py-2 text-md cursor-pointer hover:underline flex justify-center items-center'>
-              Know More <ExternalLink size={18} strokeWidth={3} className="ml-2" ></ExternalLink>
+              Know More{" "}
+              <ExternalLink
+                size={18}
+                strokeWidth={3}
+                className='ml-2'></ExternalLink>
             </a>
           </div>
           <div className='w-full mt-5 mb-4'>
@@ -42,17 +52,14 @@ export default function Page(): JSX.Element {
         </div>
 
         {/* Spline Scene */}
-        <div className='flex justify-center items-center md:w-3/5 h-96 -translate-y-20 -translate-x-10'>
-          <Spline
-            className='w-full h-96 flex scale-[.25] sm:scale-[.35] lg:scale-[.5] items-center justify-center md:justify-start -z-10'
-            scene='https://prod.spline.design/pvM5sSiYV2ivWraz/scene.splinecode'></Spline>
+        <div className='flex justify-center items-center md:w-full h-96 -translate-y-20 -translate-x-10'>
+          <SplineDesign />
         </div>
       </div>
 
       <div className='mx-auto max-w-7xl mt-56' id='know-more'>
         <div className='px-6 lg:px-8'>
           <div className='mx-auto max-w-5xl sm:text-center'>
-            
             <div className='flex justify-center items-center'>
               <h1 className='text-blue-600 font-semibold tracking-widest text-glow'>
                 {`[ HOW IT WORKS ]`}
