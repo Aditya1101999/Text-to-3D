@@ -1,9 +1,7 @@
 "use client";
 import Navbar from "./components/navbar";
 import { WandSparkles, ExternalLink } from "lucide-react";
-import Spline from "@splinetool/react-spline";
 import dynamic from "next/dynamic";
-
 import Footer from "./components/footer";
 import KnowUs from "./components/know-us";
 import Link from "next/link";
@@ -52,7 +50,7 @@ export default function Page(): JSX.Element {
         </div>
 
         {/* Spline Scene */}
-        <div className='flex justify-center items-center md:w-full h-96 -translate-y-20 -translate-x-10'>
+        <div className='w-full h-96 flex scale-[.25] sm:scale-[.35] lg:scale-[.5] items-center justify-center md:justify-start -translate-x-20 -translate-y-20'>
           <SplineDesign />
         </div>
       </div>
