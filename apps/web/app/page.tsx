@@ -2,14 +2,30 @@
 import Navbar from "./components/navbar";
 import { WandSparkles, ExternalLink } from "lucide-react";
 import dynamic from "next/dynamic";
-import Footer from "./components/footer";
-import KnowUs from "./components/know-us";
 import Link from "next/link";
-import Expertise from "./components/expertise";
 
+// Lazy Loading
 const SplineDesign = dynamic(() => import("./components/SplineDesign"), {
-  ssr: false,
+  ssr: true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
 });
+
+const ExpertiseHeader = dynamic(()=>import("./components/expertise"),{
+  ssr: true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+})
+
+const KnowHeader = dynamic(()=>import("./components/know-us"),{
+  ssr: true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+})
+
+const FooterHeader = dynamic(()=>import("./components/footer"),{
+  ssr:true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+})
+
+
 
 export default function Page(): JSX.Element {
   return (
@@ -116,13 +132,13 @@ export default function Page(): JSX.Element {
       </div>
 
       {/* What We Do */}
-      <Expertise />
+      <ExpertiseHeader />
 
       {/* Contact Us */}
-      <KnowUs />
+      <KnowHeader />
 
       {/* Footer */}
-      <Footer />
+      <FooterHeader />
     </>
   );
 }
