@@ -20,11 +20,7 @@ export default function KnowUs(): JSX.Element {
         {/* Card */}
         <div
           className='group grid grid-cols-2 mt-24 border border-slate-600 rounded-3xl cursor-pointer p-8 transition-all hover:border-slate-400'
-          style={{
-            backgroundImage: `url('/gradient.jpeg')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}>
+          >
           <div>
             <h1 className='text-white text-5xl font-semibold p-12'>
               Interested in giving Render

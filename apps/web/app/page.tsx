@@ -1,11 +1,31 @@
 "use client";
 import Navbar from "./components/navbar";
-import { WandSparkles,ExternalLink } from "lucide-react";
-import Spline from "@splinetool/react-spline";
-import Footer from "./components/footer";
-import KnowUs from "./components/know-us";
+import { WandSparkles, ExternalLink } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import Expertise from "./components/expertise";
+
+// Lazy Loading
+const SplineDesign = dynamic(() => import("./components/SplineDesign"), {
+  ssr: true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
+});
+
+const ExpertiseHeader = dynamic(()=>import("./components/expertise"),{
+  ssr: true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+})
+
+const KnowHeader = dynamic(()=>import("./components/know-us"),{
+  ssr: true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+})
+
+const FooterHeader = dynamic(()=>import("./components/footer"),{
+  ssr:true,
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+})
+
+
 
 export default function Page(): JSX.Element {
   return (
@@ -33,7 +53,11 @@ export default function Page(): JSX.Element {
             <a
               href='#know-more'
               className='text-white px-4 py-2 text-md cursor-pointer hover:underline flex justify-center items-center'>
-              Know More <ExternalLink size={18} strokeWidth={3} className="ml-2" ></ExternalLink>
+              Know More{" "}
+              <ExternalLink
+                size={18}
+                strokeWidth={3}
+                className='ml-2'></ExternalLink>
             </a>
           </div>
           <div className='w-full mt-5 mb-4'>
@@ -42,17 +66,14 @@ export default function Page(): JSX.Element {
         </div>
 
         {/* Spline Scene */}
-        <div className='flex justify-center items-center md:w-3/5 h-96 -translate-y-20 -translate-x-10'>
-          <Spline
-            className='w-full h-96 flex scale-[.25] sm:scale-[.35] lg:scale-[.5] items-center justify-center md:justify-start -z-10'
-            scene='https://prod.spline.design/pvM5sSiYV2ivWraz/scene.splinecode'></Spline>
+        <div className='w-full h-96 flex scale-[.25] sm:scale-[.35] lg:scale-[.5] items-center justify-center md:justify-start -translate-x-20 -translate-y-20'>
+          <SplineDesign />
         </div>
       </div>
 
       <div className='mx-auto max-w-7xl mt-56' id='know-more'>
         <div className='px-6 lg:px-8'>
           <div className='mx-auto max-w-5xl sm:text-center'>
-            
             <div className='flex justify-center items-center'>
               <h1 className='text-blue-600 font-semibold tracking-widest text-glow'>
                 {`[ HOW IT WORKS ]`}
@@ -111,13 +132,13 @@ export default function Page(): JSX.Element {
       </div>
 
       {/* What We Do */}
-      <Expertise />
+      <ExpertiseHeader />
 
       {/* Contact Us */}
-      <KnowUs />
+      <KnowHeader />
 
       {/* Footer */}
-      <Footer />
+      <FooterHeader />
     </>
   );
 }

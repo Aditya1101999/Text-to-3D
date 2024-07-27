@@ -6,6 +6,7 @@ html {
   background-color: #020202;
   scroll-behavior: smooth;
   cursor: pointer;
+  background-image: url('/grid.png');
 }
 
 .max-width {
