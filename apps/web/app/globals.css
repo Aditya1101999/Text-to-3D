@@ -5,6 +5,7 @@
 html {
   background-color: #000107;
   scroll-behavior: smooth;
+  background-image: url('../public/grid.png');
   cursor: pointer;
 }
 

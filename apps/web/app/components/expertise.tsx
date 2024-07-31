@@ -41,7 +41,7 @@ export default function Expertise() {
             </p>
           </div>
 
-          <div className='px-8 rounded-3xl p-8 border border-slate-800 bg-black'>
+          <div className='px-8 rounded-3xl p-8 border border-slate-800 '>
             <div className='flex justify-center mt-8'>
               <button className='px-4 py-2 text-white font-semibold rounded-full border border-blue-500 bg-gradient-to-t from-blue-500 to-black shadow-2xl shadow-blue-500 flex justify-center items-center'>
                 <LoaderIcon className="mr-2" size={18} strokeWidth={3} /> 2024: In Progress
