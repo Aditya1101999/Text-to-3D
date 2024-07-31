@@ -5,7 +5,7 @@ import { ExternalLink, MessageCircleMore } from "lucide-react";
 export default function KnowUs(): JSX.Element {
   return (
     <>
-      <div className='mx-auto max-w-7xl mt-56'>
+      <div className='mx-auto max-w-7xl mt-32'>
         <div className='flex justify-center items-center'>
           <h1 className='text-blue-600 font-semibold tracking-widest text-glow'>
             {`[ KNOW US ]`}

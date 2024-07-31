@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='py-10 flex justify-between items-center'>
+    <nav className='py-10 flex justify-between items-center mx-auto max-w-7xl'>
       {/* Logo Section */}
       <div className='flex items-center'>
         <img src='/logo.png' alt='Logo' className='h-16 w-16' />

@@ -7,7 +7,7 @@ export default function Pricing(): JSX.Element {
     <>
       <Navbar />
 
-        <div className="flex justify-center items-center text-center mt-8">
+        <div className="flex justify-center items-center text-center mt-8 mx-auto max-w-7xl">
             <h1 className="text-xl text-blue-600 font-bold">Pricing</h1>
         </div>
         <div className="flex justify-center items-center text-center mt-8">
@@ -18,7 +18,7 @@ export default function Pricing(): JSX.Element {
             <h1 className="text-md text-white font-extralight">Choose an affordable plan which suits your needs.</h1>
         </div>
 
-      <div className='max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16'>
+      <div className='px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 mx-auto max-w-7xl'>
         <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch md:grid-cols-2 md:gap-8'>
           <div className=' rounded-2xl border border-gray-800 shadow-sm bg-black' >
             <div className='p-6 sm:px-8'>
@@ -110,7 +110,7 @@ export default function Pricing(): JSX.Element {
 
               <p className='mt-2 sm:mt-4'>
                 <strong className='text-3xl font-bold text-gray-200 sm:text-4xl'>
-                  50$
+                  5$
                 </strong>
 
                 <span className='text-sm font-medium text-gray-200'>

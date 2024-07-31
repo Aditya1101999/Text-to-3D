@@ -3,16 +3,11 @@
 @tailwind utilities;
 
 html {
-  background-color: #020202;
+  background-color: #000107;
   scroll-behavior: smooth;
   cursor: pointer;
-  background-image: url('/grid.png');
 }
 
-.max-width {
-  width: min(120ch, 100% - 4rem);
-  margin-inline: auto;
-}
 
 .text-glow {
   text-shadow: 0 0 12px rgba(0, 123, 255, 0.8), 0 0 24px rgba(0, 123, 255, 0.8);

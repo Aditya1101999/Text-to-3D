@@ -1,10 +1,10 @@
-import { LoaderIcon, WandSparkles } from "lucide-react";
+import { LoaderIcon } from "lucide-react";
 import Image from 'next/image';
 
 export default function Expertise() {
   return (
     <>
-      <div className='mx-auto max-w-7xl mt-56'>
+      <div className='mx-auto max-w-7xl mt-32'>
         <div className='flex justify-center items-center'>
           <h1 className='text-blue-600 font-semibold tracking-widest text-glow'>
             {`[ READY TO GET STARTED ]`}
@@ -16,8 +16,8 @@ export default function Expertise() {
           </h1>
         </div>
 
-        <div className='grid grid-cols-2 gap-7 mt-24 bg-black'>
-          <div className='px-8 rounded-3xl p-8 border border-blue-500 shadow shadow-blue-500'>
+        <div className='grid grid-cols-2 gap-7 mt-24'>
+          <div className='px-8 rounded-3xl p-8 border border-blue-500 shadow shadow-blue-500 '>
             <div className='flex justify-center mt-8'>
               <button className='px-4 py-2 text-white font-semibold rounded-full border border-blue-500 bg-gradient-to-t from-blue-500 to-black shadow-2xl shadow-blue-500 flex justify-center items-center'>
                 <LoaderIcon size={18} className="mr-2" strokeWidth={3} /> May 2024: In Progress 

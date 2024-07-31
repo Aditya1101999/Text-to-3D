@@ -12,17 +12,17 @@ const SplineDesign = dynamic(() => import("./components/SplineDesign"), {
 
 const ExpertiseHeader = dynamic(()=>import("./components/expertise"),{
   ssr: true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
 })
 
 const KnowHeader = dynamic(()=>import("./components/know-us"),{
   ssr: true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
 })
 
 const FooterHeader = dynamic(()=>import("./components/footer"),{
   ssr:true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Loading</p>
+  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
 })
 
 
@@ -34,7 +34,7 @@ export default function Page(): JSX.Element {
       <Navbar />
 
       {/* Introduction Section */}
-      <div className='grid grid-cols-2 mt-40 h-auto'>
+      <div className='grid grid-cols-2 mt-40 h-auto mx-auto max-w-7xl'>
         <div>
           <h1 className='text-5xl text-white font-semibold mt-12'>
             Transforming your words
@@ -71,7 +71,7 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
-      <div className='mx-auto max-w-7xl mt-56' id='know-more'>
+      <div className='mx-auto max-w-7xl mt-32' id='know-more'>
         <div className='px-6 lg:px-8'>
           <div className='mx-auto max-w-5xl sm:text-center'>
             <div className='flex justify-center items-center'>

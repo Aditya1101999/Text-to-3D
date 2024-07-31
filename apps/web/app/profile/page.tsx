@@ -11,7 +11,7 @@ export default function Profile() {
     <>
       <Navbar />
 
-      <div className='flex items-center justify-between p-4 mt-16 mb-16'>
+      <div className='flex items-center justify-between p-4 mt-16 mb-16 mx-auto max-w-7xl'>
         {/* Image and User Info */}
         <div className='flex items-center flex-grow'>
           {/* Image */}
@@ -52,7 +52,7 @@ export default function Profile() {
       </div>
 
       {/* Your Creations - To be fetched from DB */}
-      <div className='p-4'>
+      <div className='p-4 mx-auto max-w-7xl'>
         <h1 className='flex items-center w-full text-left px-4 py-2 text-white text-2xl font-semibold border-b border-slate-500'>
           <WandSparkles className='mr-2' size={20} /> Your Creations
         </h1>

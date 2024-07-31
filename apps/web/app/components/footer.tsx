@@ -4,8 +4,8 @@ import { Twitter, Linkedin, Github, Youtube, ExternalLink } from "lucide-react";
 
 export default function Footer(): JSX.Element {
   return (
-    <footer className='w-full mt-24'>
-      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+    <footer className='w-full mt-24 mx-auto max-w-7xl'>
+      <div className=' px-4 sm:px-6 lg:px-8'>
         <div className='py-16 flex justify-between items-center flex-col gap-8 lg:flex-row'>
           
           {/* Logo Section */}
