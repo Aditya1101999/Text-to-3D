@@ -1,31 +1,24 @@
 "use client";
 import Navbar from "./components/navbar";
-import { WandSparkles, ExternalLink } from "lucide-react";
+import { WandSparkles } from "lucide-react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import Image from "next/image";
 
-// Lazy Loading
-const SplineDesign = dynamic(() => import("./components/SplineDesign"), {
+
+const ExpertiseHeader = dynamic(() => import("./components/expertise"), {
   ssr: true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
+  loading: () => <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
 });
 
-const ExpertiseHeader = dynamic(()=>import("./components/expertise"),{
+const KnowHeader = dynamic(() => import("./components/know-us"), {
   ssr: true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
-})
+  loading: () => <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
+});
 
-const KnowHeader = dynamic(()=>import("./components/know-us"),{
+const FooterHeader = dynamic(() => import("./components/footer"), {
   ssr: true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
-})
-
-const FooterHeader = dynamic(()=>import("./components/footer"),{
-  ssr:true,
-  loading: ()=> <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
-})
-
-
+  loading: () => <p className="bg-white text-black px-4 py-2 rounded-full">Asset Loading</p>
+});
 
 export default function Page(): JSX.Element {
   return (
@@ -34,52 +27,39 @@ export default function Page(): JSX.Element {
       <Navbar />
 
       {/* Introduction Section */}
-      <div className='grid grid-cols-2 mt-40 h-auto mx-auto max-w-7xl'>
-        <div>
-          <h1 className='text-5xl text-white font-semibold mt-12'>
-            Transforming your words
+      <div className='h-full mt-24 mx-auto max-w-7xl flex flex-col items-center justify-center text-center'>
+        <div className="mb-4 px-6 py-2 rounded-full border border-blue-500 bg-gradient-to-t from-blue-500/10 via-slate-900/10 to-blue-500/10 text-blue-200 text-sm">
+          <h1 className="flex justify-center items-center">
+            <WandSparkles className="mr-2" size={18} />
+            Currently in beta production.
           </h1>
-          <h1 className='text-5xl text-white leading-loose font-semibold'>
-            into <span className='text-blue-600'>three dimensions.</span>
-          </h1>
-
-          <div className='flex gap-4'>
-            <Link
-              href='/generate'
-              className='bg-white w-1/4 h-1/4 rounded-full text-center px-4 py-2 text-md hover:bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 shadow-lg transition-all hover:text-white cursor-pointer flex items-center justify-center'>
-              Generate
-              <WandSparkles className='ml-2' width={16} />
-            </Link>
-            <a
-              href='#know-more'
-              className='text-white px-4 py-2 text-md cursor-pointer hover:underline flex justify-center items-center'>
-              Know More{" "}
-              <ExternalLink
-                size={18}
-                strokeWidth={3}
-                className='ml-2'></ExternalLink>
-            </a>
-          </div>
-          <div className='w-full mt-5 mb-4'>
-            <h1 className='text-md text-slate-600'>Powered by OpenAI</h1>
-          </div>
         </div>
 
-        {/* Spline Scene */}
-        <div className='w-full h-96 flex scale-[.25] sm:scale-[.35] lg:scale-[.5] items-center justify-center md:justify-start -translate-x-20 -translate-y-20'>
-          <SplineDesign />
+        <div className="text-center">
+          <h1 className='text-7xl font-semibold text-transparent bg-clip-text bg-gradient-to-t from-slate-500 to-slate-50 mt-2 max-w-7xl leading-tight'>
+            Reimagine with{" "}
+            <span className='text-transparent bg-clip-text bg-gradient-to-t from-slate-500 to-slate-50'>
+              Render3D
+            </span>
+          </h1>
+          <p className='text-xl text-slate-400 font-medium mt-4 max-w-4xl'>
+            Generate 3D models faster with AI.
+          </p>
         </div>
       </div>
 
-      <div className='mx-auto max-w-7xl mt-32' id='know-more'>
-        <div className='px-6 lg:px-8'>
-          <div className='mx-auto max-w-5xl sm:text-center'>
-            <div className='flex justify-center items-center'>
-              <h1 className='text-blue-600 font-semibold tracking-widest text-glow'>
-                {`[ HOW IT WORKS ]`}
-              </h1>
-            </div>
+      <div className="mt-8 max-w-7xl mx-auto flex justify-center items-center text-center">
+        <Image src="/grid.png" width={1326} height={688} alt="Showcase Image"></Image>
+      </div>
 
+
+      {/* How It Works Section */}
+      <div className='mx-auto max-w-7xl mt-36' id='know-more'>
+        <div className='px-6 lg:px-8'>
+          <div className='mx-auto max-w-5xl text-center'>
+            <h1 className='text-blue-600 font-semibold tracking-widest'>
+              {`[ HOW IT WORKS ]`}
+            </h1>
             <h2 className='mt-8 font-bold text-4xl text-white sm:text-5xl'>
               Create 3D Models in{" "}
               <span className='text-blue-600'>minutes.</span>
@@ -87,12 +67,12 @@ export default function Page(): JSX.Element {
             <p className='mt-4 text-lg text-gray-500'>
               Render3D is a generative AI-powered platform that makes it faster,
               cheaper, and easier for users to automatically convert text
-              descriptions of real- objects into 3D models.
+              descriptions of real-world objects into 3D models.
             </p>
           </div>
         </div>
 
-        {/* steps */}
+        {/* Steps */}
         <ol className='my-8 space-y-4 pt-8 md:flex md:space-x-12 md:space-y-0'>
           <li className='md:flex-1'>
             <div className='flex flex-col space-y-2 border-l-4 border-zinc-200 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
