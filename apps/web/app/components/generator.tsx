@@ -33,7 +33,7 @@ export default function Generate(): JSX.Element {
   const handle3D = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("https://render3d-silk.vercel.app/api/v1/generate-3d", {
+      const response = await axios.post("https://localhost:3000/api/v1/generate-3d", {
         prompt: prompt,
       });
       setPlyUrl(response.data.output);
