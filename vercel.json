@@ -1,20 +1,26 @@
 {
-    "version": 2,
-    "github": {
-      "enabled":true
+  "version": 2,
+  "github": {
+    "enabled": true
+  },
+  "builds": [
+    {
+      "src": "/apps/api/src/app.ts",
+      "use": "@vercel/node"
     },
-    "builds": [
-      {
-        "src": "/apps/api/src/app.ts",  
-        "use": "@vercel/node" 
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)", 
-        "dest": "/apps/api/src/app.ts" ,
-        "methods": ["POST"] 
-      }
-    ]
-  }
-  
+    {
+      "src": "/apps/web/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/apps/api/dist/app.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/apps/web/$1"
+    }
+  ]
+}
