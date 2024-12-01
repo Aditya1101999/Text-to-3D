@@ -16,7 +16,7 @@ import * as THREE from "three";
 
 export default function Generate(): JSX.Element {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedModel, setSelectedModel] = useState("OpenAI ShapE");
+  const [selectedModel, setSelectedModel] = useState("Stable Diffusion-v1 ");
   const [prompt, setPrompt] = useState("");
   const [plyUrl, setPlyUrl] = useState("");
   const [loading, setLoading] = useState(false); 
@@ -33,7 +33,7 @@ export default function Generate(): JSX.Element {
   const handle3D = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("https://localhost:3000/api/v1/generate-3d", {
+      const response = await axios.post("`${process.env.NEXT_PUBLIC_API_URL}/server/v1/generate-3d`", {
         prompt: prompt,
       });
       setPlyUrl(response.data.output);
@@ -57,7 +57,7 @@ export default function Generate(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-3 mx-auto max-w-full px-8 gap-6 mb-8">
+      <div className=" grid grid-cols-3 mx-auto max-w-full px-8 gap-6 mb-8">
         {/* Left Grid */}
         <div className="col-span-1 flex flex-col gap-6 bg-slate-900 border border-slate-700 p-8 rounded-lg bg-opacity-30">
           <h1 className="text-blue-600 font-bold flex">
@@ -75,7 +75,7 @@ export default function Generate(): JSX.Element {
             {isDropdownOpen && (
               <div className="absolute z-10 mt-1 w-full bg-black border border-slate-700 rounded-md shadow-lg">
                 <button
-                  onClick={() => selectModel("OpenAI ShapE")}
+                  onClick={() => selectModel("Stable Diffusion-v1")}
                   className="w-full text-left p-4 hover:bg-slate-800 text-white transition-colors"
                 >
                   OpenAI ShapE
@@ -134,12 +134,12 @@ export default function Generate(): JSX.Element {
           </div>
 
           {/* For Rendering Purposes */}
-          <div className="flex justify-center items-center text-center flex-grow bg-slate-900 bg-opacity-30">
+          <div className="bg-gray-400 flex justify-center items-center text-center flex-grow bg-slate-900 bg-opacity-30">
             {loading ? (
               <h1 className="text-slate-200 text-xl opacity-30">Generating...</h1>
             ) : plyUrl ? (
               <Canvas
-                style={{ backgroundColor: "black" }}
+                style={{ backgroundColor: "grey" }}
                 camera={{ position: [0, 0, 5], fov: 50 }}
               >
                 <ambientLight intensity={0.5} />

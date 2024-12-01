@@ -8,7 +8,7 @@ export async function generate3D(prompt: string) {
         key: config.stableApiKey,
         prompt: refinedPrompt, 
         guidance_scale: 20,
-        steps: 64,
+        steps: 50,
         frame_size: 256,
         output_type: "ply"
     };

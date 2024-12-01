@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'; 
+import express from 'express'; 
 import { generate3D } from '../services/generate3D';
 import { savePrompt } from '../services/promptService';
 
@@ -14,7 +14,7 @@ generate3dRouter.post('/generate-3d', async (req,res): Promise<any> => {
     try {
         const response = await generate3D(prompt);
         if (response.status === 200) {
-            const outputUrl = response.data.output[0];
+            const outputUrl = response.data.output;
 
             const savedPrompt = await savePrompt({ prompt, output: outputUrl });
 

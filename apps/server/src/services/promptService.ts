@@ -15,7 +15,7 @@ export async function savePrompt(data: PromptData): Promise<{ id: number; prompt
     }
 
     const newPrompt = await prisma.prompt.create({
-      data,
+      data
     });
 
     return newPrompt;

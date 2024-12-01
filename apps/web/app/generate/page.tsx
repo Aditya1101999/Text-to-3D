@@ -23,7 +23,7 @@ export default function Generator():JSX.Element{
                 Select your generation model.
               </span>
               <span className='mt-2 text-zinc-400'>
-                Currently, we have OpenAI ShapE. We are working on adding new generation models.
+                Currently, we have Stable Diffusion-v1. We are working on adding new generation models.
               </span>
             </div>
           </li>

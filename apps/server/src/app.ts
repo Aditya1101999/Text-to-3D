@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/v1', generate3dRouter);
+app.use('/server/v1', generate3dRouter);
+const PORT = process.env.PORT || 3001;
 
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 export default app;
