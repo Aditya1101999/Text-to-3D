@@ -78,7 +78,7 @@ export default function Generate(): JSX.Element {
                   onClick={() => selectModel("Stable Diffusion-v1")}
                   className="w-full text-left p-4 hover:bg-slate-800 text-white transition-colors"
                 >
-                  OpenAI ShapE
+                  Stable Diffusion-v1
                 </button>
                 <button
                   onClick={() => selectModel("VoxelCNN")}

@@ -4,10 +4,6 @@
     {
       "src": "server/dist/app.js", 
       "use": "@vercel/node"        
-    },
-    {
-      "src": "web/next.config.js",  
-      "use": "@vercel/next"      
     }
   ],
   "routes": [
