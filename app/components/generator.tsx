@@ -33,7 +33,7 @@ export default function Generate(): JSX.Element {
   const handle3D = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("`${process.env.NEXT_PUBLIC_API_URL}/server/v1/generate-3d`", {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/server/v1/generate-3d`, {
         prompt: prompt,
       });
       setPlyUrl(response.data.output);
@@ -46,14 +46,16 @@ export default function Generate(): JSX.Element {
   };
 
   const PlyModel = () => {
+  try {
     const geometry = useLoader(PLYLoader, plyUrl);
-    if (!geometry) {
-      return null;
-    }
-
     const material = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: false });
     return <mesh geometry={geometry} material={material} />;
-  };
+  } catch (error) {
+    console.error("Error loading PLY model:", error);
+    return <h1 className="text-slate-200 text-xl opacity-30">Failed to load 3D model.</h1>;
+  }
+};
+
 
   return (
     <>
