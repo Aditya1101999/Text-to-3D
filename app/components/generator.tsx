@@ -9,6 +9,7 @@ import {
   InfoIcon,
 } from "lucide-react";
 import axios from "axios";
+import { extend } from '@react-three/fiber'
 import { Canvas, useLoader } from "@react-three/fiber";
 import { PLYLoader } from "three-stdlib";
 import { OrbitControls } from "@react-three/drei";
@@ -16,10 +17,16 @@ import * as THREE from "three";
 
 export default function Generate(): JSX.Element {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedModel, setSelectedModel] = useState("Stable Diffusion-v1 ");
+  const [selectedModel, setSelectedModel] = useState("Stable Diffusion-v1");
   const [prompt, setPrompt] = useState("");
   const [plyUrl, setPlyUrl] = useState("");
-  const [loading, setLoading] = useState(false); 
+  const [, setLoading] = useState(false);
+
+  extend({ PLYLoader });
+  extend({ Canvas });
+  extend({ useLoader });
+  extend({ OrbitControls });
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -46,15 +53,18 @@ export default function Generate(): JSX.Element {
   };
 
   const PlyModel = () => {
-  try {
-    const geometry = useLoader(PLYLoader, plyUrl);
-    const material = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: false });
-    return <mesh geometry={geometry} material={material} />;
-  } catch (error) {
-    console.error("Error loading PLY model:", error);
-    return <h1 className="text-slate-200 text-xl opacity-30">Failed to load 3D model.</h1>;
-  }
-};
+    try {
+      const geometry = useLoader(PLYLoader, plyUrl);
+      const material = new THREE.MeshStandardMaterial({
+        vertexColors: true,
+        flatShading: false,
+      });
+      return <mesh geometry={geometry} material={material} />;
+    } catch (error) {
+      console.error("Error loading PLY model:", error);
+      return null; // Return null inside the Canvas if loading fails
+    }
+  };
 
 
   return (
@@ -137,25 +147,29 @@ export default function Generate(): JSX.Element {
 
           {/* For Rendering Purposes */}
           <div className="bg-gray-400 flex justify-center items-center text-center flex-grow bg-slate-900 bg-opacity-30">
-            {loading ? (
-              <h1 className="text-slate-200 text-xl opacity-30">Generating...</h1>
-            ) : plyUrl ? (
+            {plyUrl ? (
               <Canvas
-                style={{ backgroundColor: "grey" }}
+                style={{ backgroundColor: "#415a77" }}
                 camera={{ position: [0, 0, 5], fov: 50 }}
               >
                 <ambientLight intensity={0.5} />
-                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} castShadow
+                <spotLight
+                  position={[10, 10, 10]}
+                  angle={0.15}
+                  penumbra={1}
+                  castShadow
                   shadow-mapSize-width={1024}
-                  shadow-mapSize-height={1024} />
+                  shadow-mapSize-height={1024}
+                />
                 <PlyModel />
                 <OrbitControls />
               </Canvas>
             ) : (
               <h1 className="text-slate-200 text-xl opacity-30">
-                Your 3D model renders here.
+                Click generate to render the 3D Prototype
               </h1>
             )}
+
           </div>
         </div>
       </div>
