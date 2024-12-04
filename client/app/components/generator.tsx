@@ -14,7 +14,6 @@ export default function Generate(): JSX.Element {
   const [selectedModel, setSelectedModel] = useState("Stable Diffusion-v1");
   const [prompt, setPrompt] = useState("");
   const [plyUrl, setPlyUrl] = useState("");
-  const [loading, setLoading] = useState(false);
   const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
 
   extend({ PLYLoader });
@@ -32,7 +31,6 @@ export default function Generate(): JSX.Element {
   };
 
   const handle3D = async () => {
-    setLoading(true);
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/server/v1/generate-3d`, {
         prompt: prompt,
@@ -40,8 +38,6 @@ export default function Generate(): JSX.Element {
       setPlyUrl(response.data.output);
     } catch (error) {
       console.log("Error occurred due to", error);
-    } finally {
-      setLoading(false);
     }
   };
   useEffect(() => {
