@@ -178,7 +178,3 @@ Contributions are welcome! Feel free to submit pull requests, open issues, or su
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-This updated README incorporates the separate backend and frontend setup, revised environment variables, and the new steps for building and running the application.
