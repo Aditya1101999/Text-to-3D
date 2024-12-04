@@ -54,7 +54,7 @@ export default function Navbar() {
           <button onClick={toggleDropdown} className='flex items-center text-white bg-black border border-slate-700 px-4 py-2 rounded-full'>
             {session.user?.name} <ChevronDown className='ml-2' />
             {dropdownOpen && (
-              <div className='absolute right-0 mt-2 w-48 bg-black border border-slate-700 rounded-md shadow-lg py-1 z-20'>
+              <div className='absolute right-12 mt-60 w-48 bg-black border border-slate-700 rounded-md shadow-lg py-1 z-20'>
                 <Link href='/profile' className='flex items-center px-4 py-2 text-white hover:bg-slate-900'>
                   <User className='mr-2' size={16} /> Profile
                 </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
                 <div className='border-t border-slate-700 my-1'></div>
                 <button onClick={handleSignOut} className='flex items-center w-full text-left px-4 py-2 text-white hover:bg-slate-900'>
                   <LogOut className='mr-2' size={16} /> Sign Out
-                </button>
+                  </button>
               </div>
             )}
           </button>
