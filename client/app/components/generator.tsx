@@ -1,15 +1,9 @@
-"use client";
+"use client"
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useState } from "react";
-import {
-  WandSparkles,
-  ChevronDown,
-  ChevronUp,
-  SaveIcon,
-  InfoIcon,
-} from "lucide-react";
+import { WandSparkles, ChevronDown, ChevronUp, SaveIcon, InfoIcon } from "lucide-react";
 import axios from "axios";
-import { extend } from '@react-three/fiber'
+import { extend } from '@react-three/fiber';
 import { Canvas, useLoader } from "@react-three/fiber";
 import { PLYLoader } from "three-stdlib";
 import { OrbitControls } from "@react-three/drei";
@@ -20,13 +14,13 @@ export default function Generate(): JSX.Element {
   const [selectedModel, setSelectedModel] = useState("Stable Diffusion-v1");
   const [prompt, setPrompt] = useState("");
   const [plyUrl, setPlyUrl] = useState("");
-  const [, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
 
   extend({ PLYLoader });
   extend({ Canvas });
   extend({ useLoader });
   extend({ OrbitControls });
-
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -44,28 +38,39 @@ export default function Generate(): JSX.Element {
         prompt: prompt,
       });
       setPlyUrl(response.data.output);
-      console.log(response.data);
     } catch (error) {
       console.log("Error occurred due to", error);
     } finally {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    if (!plyUrl) return; 
+
+    const loader = new PLYLoader();
+    loader.load(
+      plyUrl,
+      (loadedGeometry) => {
+        setGeometry(loadedGeometry);
+      },
+      undefined,
+      (error) => {
+        console.error("Error loading PLY model:", error);
+        setGeometry(null);
+      }
+    );
+  }, [plyUrl]);
 
   const PlyModel = () => {
-    try {
-      const geometry = useLoader(PLYLoader, plyUrl);
-      const material = new THREE.MeshStandardMaterial({
-        vertexColors: true,
-        flatShading: false,
-      });
-      return <mesh geometry={geometry} material={material} />;
-    } catch (error) {
-      console.error("Error loading PLY model:", error);
-      return null; // Return null inside the Canvas if loading fails
-    }
-  };
+    if (!geometry) return null;
 
+    const material = new THREE.MeshStandardMaterial({
+      vertexColors: true,
+      flatShading: false,
+    });
+
+    return <mesh geometry={geometry} material={material} />;
+  };
 
   return (
     <>
@@ -169,7 +174,6 @@ export default function Generate(): JSX.Element {
                 Click generate to render the 3D Prototype
               </h1>
             )}
-
           </div>
         </div>
       </div>

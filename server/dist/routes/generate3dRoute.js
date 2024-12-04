@@ -13,8 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const generate3D_1 = require("../services/generate3D");
-const promptService_1 = require("../services/promptService");
 const generate3dRouter = express_1.default.Router();
 generate3dRouter.post('/generate-3d', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { prompt } = req.body;
@@ -22,25 +20,28 @@ generate3dRouter.post('/generate-3d', (req, res) => __awaiter(void 0, void 0, vo
         return res.status(400).json({ error: 'Prompt is required for the generation of 3D Model' });
     }
     try {
-        const response = yield (0, generate3D_1.generate3D)(prompt);
-        if (response.status === 200) {
-            console.log(response);
-            const outputUrl = response.data.output[0];
-            console.log(outputUrl);
-            const savedPrompt = yield (0, promptService_1.savePrompt)({ prompt, output: outputUrl });
-            console.log(savedPrompt);
-            if (savedPrompt) {
-                return res.json({
-                    status: "success",
-                    id: savedPrompt.id,
-                    prompt: savedPrompt.prompt,
-                    output: savedPrompt.output
-                });
-            }
-        }
-        else {
-            return res.status(response.status).json({ error: 'Failed to generate 3D Model' });
-        }
+        return res.json({
+            status: "success",
+            output: "https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/generations/8cd5a179-446d-404e-95bc-df9b64d40f76.ply"
+        });
+        // const response = await generate3D(prompt);
+        // if (response.status === 200) {
+        //     console.log(response)
+        //     const outputUrl = response.data.output[0];
+        //     console.log(outputUrl)
+        //     const savedPrompt = await savePrompt({ prompt, output: outputUrl });
+        //     console.log(savedPrompt)
+        //     if (savedPrompt) {
+        //         return res.json({
+        //             status: "success",
+        //             id: savedPrompt.id,
+        //             prompt: savedPrompt.prompt,
+        //             output: savedPrompt.output
+        //         });
+        //     }
+        // } else {
+        //     return res.status(response.status).json({ error: 'Failed to generate 3D Model' });
+        // }
     }
     catch (error) {
         if (error instanceof Error) {

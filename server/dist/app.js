@@ -9,13 +9,9 @@ const generate3dRoute_1 = __importDefault(require("./routes/generate3dRoute"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
 app.use('/server/v1', generate3dRoute_1.default);
 const PORT = 4000;
-const HOST = '0.0.0.0';
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 exports.default = app;
